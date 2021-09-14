@@ -12,6 +12,6 @@ router.patch('/:id', userController.edit)
 router.delete('/:id', userController.delete)
 
 // nested route
-router.use('/:nesteduserId/jobs', jobRouter)
+router.use('/:userId/jobs', jobRouter)
 
 module.exports = router;
