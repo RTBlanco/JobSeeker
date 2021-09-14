@@ -1,5 +1,6 @@
 
 const jobsController = {
+
   all (req, res) {
     console.log(req.params)
     res.send("<h1>Gets all Jobs</h1>")
@@ -7,7 +8,12 @@ const jobsController = {
   
   show (req, res) {
     console.log(req.params)
-    res.send(`<h1>route is get info for job with id of  ${req.params.id}</h1>`)
+    if (req.params.userId) {
+      res.send(`<h1>User id: ${req.params.userId}</h1><h1>job id: ${req.params.id}</h1>`)
+    } else {
+      res.send(`<h1>route is get info for job with id of  ${req.params.id}</h1>`)
+    }
+    
   }, 
 
   new (req, res) {
