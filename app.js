@@ -16,7 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', usersRouter);
+app.use('/api', usersRouter);
+app.use('/api/jobs', jobsRouter)
 
 app.listen(3000, () => {
   console.log('server started on http://localhost:3000/')
