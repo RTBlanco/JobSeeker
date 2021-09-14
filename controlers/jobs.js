@@ -11,7 +11,7 @@ const jobsController = {
     if (req.params.userId) {
       res.send(`<h1>User id: ${req.params.userId}</h1><h1>job id: ${req.params.id}</h1>`)
     } else {
-      res.send(`<h1>route is get info for job with id of  ${req.params.id}</h1>`)
+      res.send(`<h1>This route is for getting info for job with id of  ${req.params.id}</h1>`)
     }
     
   }, 

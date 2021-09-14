@@ -6,7 +6,7 @@ const userController = {
   },
   
   show (req, res) {
-    res.send(`<h1>route is info for ${req.params.id}</h1>`)
+    res.send(`<h1>This route is for getting info for user with id of ${req.params.id}</h1>`)
   }, 
 
   new (req, res) {
