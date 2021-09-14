@@ -1,10 +1,12 @@
 
 const jobsController = {
   all (req, res) {
+    console.log(req.params)
     res.send("<h1>Gets all Jobs</h1>")
   },
   
   show (req, res) {
+    console.log(req.params)
     res.send(`<h1>route is get info for job with id of  ${req.params.id}</h1>`)
   }, 
 

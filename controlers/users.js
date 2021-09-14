@@ -1,6 +1,7 @@
 
 const userController = {
   all (req, res) {
+    console.log(req.params)
     res.send("<h1>Users</h1>")
   },
   
