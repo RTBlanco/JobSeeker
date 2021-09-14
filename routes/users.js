@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const userController = require('../controlers/users')
 
 /* GET home page. */
-router.get('/', (req, res) =>  {
-  res.send("<h1>Users</h1>");
-});
+router.get('/', userController.all);
 
 router.get('/:id', (req, res) => {
   res.send(`route is info for ${req.params.id}`)
