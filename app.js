@@ -4,6 +4,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const multer = require('multer');
+const upload = multer();
+
 const usersRouter = require('./routes/users');
 const jobsRouter = require('./routes/jobs');
 
@@ -15,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(upload.array())
 
 // routes 
 app.use('/api', usersRouter);
