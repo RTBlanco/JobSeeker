@@ -1,17 +1,26 @@
+const jobs = [
+  {id: 1, name: "facebook", userId: 1},
+  {id: 1, name: "twitter", userId: 1},
+  {id: 1, name: "github", userId: 2},
+  {id: 1, name: "microsoft", userId: 2},
+]
+
 
 const jobsController = {
 
   all (req, res) {
     console.log(req.params)
-    res.send("<h1>Gets all Jobs</h1>")
+    res.send(jobs)
   },
   
   show (req, res) {
     console.log(req.params)
     if (req.params.userId) {
-      res.send(`<h1>User id: ${req.params.userId}</h1><h1>job id: ${req.params.id}</h1>`)
+      const userJobs = jobs.filter(job => job.userId == req.params.userId)
+      const job = userJobs.find(j => j.id  == req.params.id)
+      res.send(job)
     } else {
-      res.send(`<h1>This route is for getting info for job with id of  ${req.params.id}</h1>`)
+      res.send(jobs)
     }
     
   }, 
