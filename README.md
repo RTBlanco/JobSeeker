@@ -22,9 +22,6 @@ Job:
 - position ->  str
 - company name ->  str
 - hopeful salary ->  int
-
-	~Atributes that update frequently~
-
 - status ->  interviewing | rejected 
 - offer ->  NIL if not given 
 - interviews ->  array of interview dates
