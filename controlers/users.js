@@ -2,17 +2,18 @@ const User = require('../models/User')
 
 const userController = {
   async all (req, res) {
-    // console.log(req.params)
     const users = await User.findAll();
     res.send(users)
   },
   
-  show (req, res) {
-    res.send(`<h1>This route is for getting info for user with id of ${req.params.id}</h1>`)
+  async show (req, res) {
+    const user = await User.findByPk(req.params.id)
+    res.send(user)
   }, 
 
   new (req, res) {
-    res.send('<h1>this route is to create a new user</h1>')
+
+    // res.send()
   },
 
   edit (req, res) {
