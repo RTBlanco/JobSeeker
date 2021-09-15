@@ -29,3 +29,5 @@ User.init({
     type: DataTypes.INTEGER
   }
 })
+
+module.exports = Job;

@@ -22,3 +22,5 @@ User.init({
     allowNull: false
   }
 })
+
+module.exports = User;
