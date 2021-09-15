@@ -13,6 +13,11 @@ const upload = multer();
 const usersRouter = require('./routes/users');
 const jobsRouter = require('./routes/jobs');
 
+
+const sync = async () => await sequelize.sync({alter:true})
+sync()
+
+
 const app = express();
 
 
@@ -23,10 +28,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(upload.array())
 app.use(cors())
-
-const sync = async () => await sequelize.sync({alter:true})
-sync()
-
 
 // routes 
 app.use('/api', usersRouter);
