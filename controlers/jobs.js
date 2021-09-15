@@ -1,10 +1,3 @@
-const jobs = [
-  {id: 1, name: "facebook", userId: 1},
-  {id: 1, name: "twitter", userId: 1},
-  {id: 1, name: "github", userId: 2},
-  {id: 1, name: "microsoft", userId: 2},
-]
-
 
 const jobsController = {
 
