@@ -1,11 +1,11 @@
-const { Sequalize } = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: './db/database.sqlite'
 });
 
-const checkConnection =async () => {
+const checkConnection = async () => {
   try {
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
