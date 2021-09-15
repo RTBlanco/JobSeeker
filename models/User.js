@@ -1,7 +1,10 @@
 const {DataTypes, Model} = require('sequelize');
 const sequelize = require('../db/dbConnection'); 
 
-class User extends Model {}
+class User extends Model {
+
+  // TODO: create Method for Favorites
+}
 
 User.init({
   name: {
