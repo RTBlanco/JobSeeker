@@ -13,13 +13,10 @@ const upload = multer();
 const usersRouter = require('./routes/users');
 const jobsRouter = require('./routes/jobs');
 
-
-const sync = async () => await sequelize.sync({alter:true})
-sync()
-
-
 const app = express();
 
+const sync = async () => await sequalize.sync({alter:true})
+sync()
 
 app.use(logger('dev'));
 app.use(express.json());
