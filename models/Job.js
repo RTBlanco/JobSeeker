@@ -6,7 +6,7 @@ class Job extends Model {
   // Create a method for Interviews
 }
 
-User.init({
+Job.init({
   position: {
     type: DataTypes.STRING,
     allowNull: false
@@ -34,6 +34,9 @@ User.init({
     allowNull: false,
     defaultValue: 0
   }
+}, {
+  sequelize,
+  modelName: 'Job'
 })
 
 module.exports = Job;
