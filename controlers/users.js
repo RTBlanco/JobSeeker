@@ -1,8 +1,10 @@
+const User = require('../models/User')
 
 const userController = {
-  all (req, res) {
-    console.log(req.params)
-    res.send("<h1>Users</h1>")
+  async all (req, res) {
+    // console.log(req.params)
+    const users = await User.findAll();
+    res.send(users)
   },
   
   show (req, res) {
