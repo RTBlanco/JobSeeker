@@ -19,14 +19,20 @@ User.init({
 
   hopeSal: {
     type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0
   },
 
   status: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: 'pending'
   },
 
   offer: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0
   }
 })
 

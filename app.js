@@ -15,6 +15,19 @@ const jobsRouter = require('./routes/jobs');
 
 const app = express();
 
+// Relations
+const User = require('./models/User');
+const Job = require('./models/Job');
+
+User.hasMany(Job, {
+  onDelete: 'CASCADE'
+})
+Job.belongsTo(User)
+
+
+
+
+
 const sync = async () => await sequalize.sync({alter:true})
 sync()
 
