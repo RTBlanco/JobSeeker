@@ -16,7 +16,7 @@ User :
 - Name ->  str
 - email ->  str
 - password ->  str
-- favorites ->  array of top 3 three jobs
+- favorites ->  array of top 3 three jobs (method)
 
 Job: 
 - position ->  str
@@ -24,4 +24,4 @@ Job:
 - hopeful salary ->  int
 - status ->  interviewing | rejected 
 - offer ->  NIL if not given 
-- interviews ->  array of interview dates
+- interviews ->  array of interview dates (method)
