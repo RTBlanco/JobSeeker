@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const sequalize = require('./db/dbConnection');
 
 const multer = require('multer');
 const upload = multer();
@@ -20,6 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(upload.array())
+
+const sync = async () => await sequelize.sync({alter:true})
+sync()
+
 
 // routes 
 app.use('/api', usersRouter);
