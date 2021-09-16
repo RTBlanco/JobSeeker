@@ -1,4 +1,5 @@
 const Job = require('../models/Job');
+const User = require('../models/User');
 
 const jobsController = {
 
@@ -18,13 +19,28 @@ const jobsController = {
   
   async show (req, res) {
     try {
-
-      const job = await Job.findByPk(req.params.id)
-      if (!job){
-        throw new Error('No such job found')
+      if(req.params.userId) {
+        const user = await User.findByPk(req.params.userId)
+        if(!user) {
+          throw new Error("N such user found")
+        }
+        const job = await Job.findOne({
+          where: {
+            userId: user.id,
+            id: req.params.id
+          }
+        })
+        if (!job){
+          throw new Error(`No such job found for user`)
+        }
+        res.json(job)
+      } else {
+        const job = await Job.findByPk(req.params.id)
+        if (!job) {
+          throw new Error ("No such job found")
+        }
+        res.json(job)
       }
-      res.json(job)
-
     } catch(e){
 
       return res.status(404).json({
