@@ -1,13 +1,17 @@
 // -> "npm run console" will open the console
 
 const repl = require("repl");
-const User = require("./models/User");
-const Job = require("./models/Job");
+const User = require('./models/User');
+const Job = require('./models/Job');
+const Interview = require('./models/Interview');
 
-User.hasMany(Job, {
-  onDelete: 'CASCADE'
-})
+// User has Many jobs 
+User.hasMany(Job, { onDelete: 'CASCADE' })
 Job.belongsTo(User)
+
+// Jobs has many interviews
+Job.hasMany(Interview, {onDelete: "CASCADE"})
+Interview.belongsTo(Job)
 
 
 
