@@ -4,7 +4,6 @@ const jobsController = {
 
   async all (req, res) {
     if (req.params.userId) {
-
       const jobs = await Job.findAll({
         where: {
           userId: req.params.userId
@@ -12,7 +11,6 @@ const jobsController = {
       });
       res.json(jobs)
     } else {
-
       const jobs = await Job.findAll()
       res.json(jobs)
     }
