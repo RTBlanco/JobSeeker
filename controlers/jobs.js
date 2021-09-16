@@ -55,7 +55,7 @@ const jobsController = {
       if (req.params.userId) {
         const user = await User.findByPk(req.params.userId)
         if (!user) {
-          throw new Error('Can create new job with user')
+          throw new Error('Can not create new job with current user')
         }
         const job = await user.createJob(data)
         res.json(job)
@@ -72,7 +72,39 @@ const jobsController = {
   },
 
   async edit (req, res) {
-    res.send(`<h1> this route to edit the job with id of ${req.params.id}`)
+    const data = {...req.body}
+    console.log(data)
+    try {
+      if (req.params.userId) {
+        const user = await User.findByPk(req.params.userId)
+        if (!user) {
+          throw new Error('Cant edit Job with current user')
+        }
+        const job = await Job.findOne({
+          where: {
+            userId: user.id,
+            id: req.params.id
+          }
+        })
+        if(!job) {
+          throw new Error("Job not found")
+        }
+        const updatedJob = await job.update(data)
+        res.json(updatedJob)
+      } else {
+        const job = await Job.findByPk(req.params.id)
+        if(!job) {
+          throw new Error("Job not found")
+        }
+        const updatedJob = await job.update(data)
+        res.json(updatedJob)
+      }
+    } catch (e) {
+      const errors = e.errors.map(er => er.message)
+      return res.status(422).json({
+        errors: {body: [errors]}
+      })
+    }
   },
 
   async delete (req, res) {
