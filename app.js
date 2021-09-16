@@ -42,8 +42,8 @@ app.use(upload.array())
 app.use(cors())
 
 // routes 
-app.use('/api', usersRouter);
-app.use('/api/jobs', jobsRouter)
+app.use('/users', usersRouter);
+app.use('/jobs', jobsRouter)
 
 app.listen(3000, () => {
   console.log('server started on http://localhost:3000/')
