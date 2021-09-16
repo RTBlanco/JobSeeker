@@ -11,9 +11,18 @@ const userController = {
     res.send(user)
   }, 
 
-  new (req, res) {
+  async new (req, res) {
+    const data = {...req.body}
 
-    // res.send()
+    try {
+      const user = await User.create(data)
+      console.log(user)
+      res.json(user)
+
+    } catch (e) {
+      const errors = e.errors.map(er => er.message)
+      res.json(errors)
+    }
   },
 
   edit (req, res) {
