@@ -50,7 +50,25 @@ const jobsController = {
   }, 
 
   async new (req, res) {
-    res.send('<h1>this route is to create a new job</h1>')
+    const data = {...req.body}
+    try {
+      if (req.params.userId) {
+        const user = await User.findByPk(req.params.userId)
+        if (!user) {
+          throw new Error('Can create new job with user')
+        }
+        const job = await user.createJob(data)
+        res.json(job)
+      } else {
+        const job = await Job.create(data)
+        res.json(job)
+      }
+    } catch (e) {
+      const errors = e.errors.map(er => er.message)
+      return res.status(422).json({
+        errors: {body: [errors]}
+      })
+    }
   },
 
   async edit (req, res) {
