@@ -25,6 +25,14 @@ Job.init({
       isInt: {
         msg: 'Hopefull salary must be a valid number'
       }
+    },
+    set(value) {
+      if (Number.isInteger(value)){
+        this.setDataValue('hopeSal', value)
+      } else {
+        const intValue = parseInt(value)
+        this.setDataValue('hopeSal', intValue)
+      }
     }
   },
 
@@ -45,6 +53,14 @@ Job.init({
       // notEmpty: {
       //   msg: "Offer must not be an emtpy string"
       // }
+    },
+    set(value) {
+      if (Number.isInteger(value)){
+        this.setDataValue('offer', value)
+      } else {
+        const intValue = parseInt(value)
+        this.setDataValue('offer', intValue)
+      }
     }
   }, 
 
