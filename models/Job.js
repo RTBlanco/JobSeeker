@@ -20,7 +20,12 @@ Job.init({
   hopeSal: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    defaultValue: 0
+    defaultValue: 0,
+    validate: {
+      isInt: {
+        msg: 'Hopefull salary must be a valid number'
+      }
+    }
   },
 
   status: {
@@ -32,7 +37,15 @@ Job.init({
   offer: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    defaultValue: 0
+    defaultValue: 0,
+    validate: {
+      isInt: {
+        msg: "Offer must be a valid number"
+      },
+      // notEmpty: {
+      //   msg: "Offer must not be an emtpy string"
+      // }
+    }
   }, 
 
   favorite: {
