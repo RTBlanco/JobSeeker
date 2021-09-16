@@ -1,6 +1,7 @@
 const User = require('../models/User');
 
 const userController = {
+  
   async all (req, res) {
     const users = await User.findAll();
     res.send(users)
