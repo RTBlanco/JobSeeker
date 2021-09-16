@@ -1,32 +1,39 @@
+const Job = require('../models/Job');
 
 const jobsController = {
 
-  all (req, res) {
+  async all (req, res) {
     console.log(req.params)
-    res.send(jobs)
+    const jobs = await Job.findAll();
+    res.json(jobs)
   },
   
-  show (req, res) {
-    console.log(req.params)
-    if (req.params.userId) {
-      const userJobs = jobs.filter(job => job.userId == req.params.userId)
-      const job = userJobs.find(j => j.id  == req.params.id)
-      res.send(job)
-    } else {
-      res.send(jobs)
+  async show (req, res) {
+    try {
+
+      const job = await Job.findByPk(req.params.id)
+      if (!job){
+        throw new Error('No such job found')
+      }
+      res.json(job)
+
+    } catch(e){
+
+      return res.status(404).json({
+        error: e.message
+      })
     }
-    
   }, 
 
-  new (req, res) {
+  async new (req, res) {
     res.send('<h1>this route is to create a new job</h1>')
   },
 
-  edit (req, res) {
+  async edit (req, res) {
     res.send(`<h1> this route to edit the job with id of ${req.params.id}`)
   },
 
-  delete (req, res) {
+  async delete (req, res) {
     res.send(`this will delete the job with id of ${req.params.id}`)
   }
 };
