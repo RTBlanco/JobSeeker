@@ -4,7 +4,7 @@ const jobsController = require('../controlers/jobs')
 
 router.get('/', jobsController.all);
 router.get('/:id', jobsController.show)
-router.get('/new', jobsController.new)
+router.post('/new', jobsController.new)
 router.patch('/:id', jobsController.edit)
 router.delete('/:id', jobsController.delete)
 
