@@ -1,3 +1,4 @@
+const e = require('express');
 const Job = require('../models/Job');
 const User = require('../models/User');
 
@@ -87,7 +88,7 @@ const jobsController = {
           }
         })
         if(!job) {
-          throw new Error("Job not found")
+          throw new Error("Job not found for current User")
         }
         const updatedJob = await job.update(data)
         res.json(updatedJob)
@@ -100,10 +101,18 @@ const jobsController = {
         res.json(updatedJob)
       }
     } catch (e) {
-      const errors = e.errors.map(er => er.message)
-      return res.status(422).json({
-        errors: {body: [errors]}
-      })
+
+      if (!e.errors) {
+        res.status(422).json({
+          error: e.message
+        })
+      } else {
+        console.log("here =>", e)
+        const errors = e.errors.map(er => er.message)
+        res.status(422).json({
+          errors: {body: [errors]}
+        })
+      }
     }
   },
 
