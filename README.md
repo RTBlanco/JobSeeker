@@ -9,7 +9,7 @@ JobSeeker is a site where an individual user can have a way to keep track of job
 ## Modals 
 
 Association
-	A user will have many jobs aka -> "one to many relation" .
+	A user will have many jobs aka -> "one to many relation". A job will have many interviews
 
 
 User : 
@@ -25,3 +25,7 @@ Job:
 - status ->  interviewing | rejected ->  str
 - offer ->  NIL if not given 
 - interviews ->  array of interview dates (method)
+
+Interview: 
+ - date -> date
+ - notes - str
