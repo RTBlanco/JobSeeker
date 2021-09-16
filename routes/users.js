@@ -7,7 +7,7 @@ const jobRouter = require('./jobs')
 
 router.get('/', userController.all);
 router.get('/:id', userController.show)
-router.get('/new', userController.new)
+router.post('/new', userController.new)
 router.patch('/:id', userController.edit)
 router.delete('/:id', userController.delete)
 
