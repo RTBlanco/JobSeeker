@@ -22,7 +22,6 @@ const Interview = require('./models/Interview');
 
 // User has Many jobs 
 User.hasMany(Job, { onDelete: 'CASCADE' })
-User.hasMany(Job, { as: "favorite"})
 Job.belongsTo(User)
 
 // Jobs has many interviews
