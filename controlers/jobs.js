@@ -3,9 +3,19 @@ const Job = require('../models/Job');
 const jobsController = {
 
   async all (req, res) {
-    console.log(req.params)
-    const jobs = await Job.findAll();
-    res.json(jobs)
+    if (req.params.userId) {
+
+      const jobs = await Job.findAll({
+        where: {
+          userId: req.params.userId
+        }
+      });
+      res.json(jobs)
+    } else {
+
+      const jobs = await Job.findAll()
+      res.json(jobs)
+    }
   },
   
   async show (req, res) {
