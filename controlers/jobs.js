@@ -23,7 +23,7 @@ const jobsController = {
       if(req.params.userId) {
         const user = await User.findByPk(req.params.userId)
         if(!user) {
-          throw new Error("N such user found")
+          throw new Error("cant show job with current user")
         }
         const job = await Job.findOne({
           where: {
@@ -117,7 +117,11 @@ const jobsController = {
   },
 
   async delete (req, res) {
-    res.send(`this will delete the job with id of ${req.params.id}`)
+    try {
+      if (req.params.userId) {
+        const user
+      }
+    }
   }
 };
 
