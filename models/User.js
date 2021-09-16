@@ -11,7 +11,10 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      len: [2, 10]
+      len: [2, 50],
+      notNull: {
+        msg: 'Name cant be empty'
+      }
     }
   },
 
