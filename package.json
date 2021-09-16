@@ -18,5 +18,8 @@
     "nodemon": "^2.0.12",
     "sequelize": "^6.6.5",
     "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
   }
 }
