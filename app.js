@@ -19,10 +19,11 @@ const app = express();
 const User = require('./models/User');
 const Job = require('./models/Job');
 
-User.hasMany(Job, {
-  onDelete: 'CASCADE'
-})
+User.hasMany(Job, { onDelete: 'CASCADE' })
+User.hasMany(Job, { as: "favorite"})
+
 Job.belongsTo(User)
+
 
 
 
