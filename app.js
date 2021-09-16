@@ -31,11 +31,6 @@ Interview.belongsTo(Job)
 
 
 
-
-
-
-
-
 const sync = async () => await sequalize.sync({alter:true})
 sync()
 
