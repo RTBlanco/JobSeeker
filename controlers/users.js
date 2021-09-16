@@ -68,8 +68,21 @@ const userController = {
 
   },
 
-  delete (req, res) {
-    res.send(`this will delete the use with ${req.params.id}`)
+  async delete (req, res) {
+    try {
+      
+      const user = await User.findByPk(req.params.id)
+      if (!user){
+        throw new Error('No such user found')
+      }
+      user.destroy()
+      res.json(user)
+
+    } catch(e) {
+      return res.status(404).json({
+        error: e.message
+      })
+    }
   }
 };
 
