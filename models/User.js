@@ -9,18 +9,30 @@ class User extends Model {
 User.init({
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      len: [2, 10]
+    }
   },
 
   email: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true,
+      len: [2, 50]
+    }
   },
 
   password: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      len: [4, 50]
+    }
   }
+
 },{
   sequelize,
   modelName: 'User'
