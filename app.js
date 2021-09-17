@@ -12,6 +12,7 @@ const upload = multer();
 
 const usersRouter = require('./routes/users');
 const jobsRouter = require('./routes/jobs');
+const InterviewRouter = require('./router/interview');
 
 const app = express();
 
@@ -43,7 +44,8 @@ app.use(cors())
 
 // routes 
 app.use('/users', usersRouter);
-app.use('/jobs', jobsRouter)
+app.use('/jobs', jobsRouter);
+app.use('interviews', InterviewRouter);
 
 app.listen(3000, () => {
   console.log('server started on http://localhost:3000/')
