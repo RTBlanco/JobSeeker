@@ -1,4 +1,3 @@
-const e = require('express');
 const Job = require('../models/Job');
 const User = require('../models/User');
 
