@@ -1,5 +1,7 @@
 const User = require('../models/User');
 
+// TODO: add user authentication
+
 const userController = {
   
   async all (req, res) {
