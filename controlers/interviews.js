@@ -2,6 +2,8 @@ const Job = require('../models/Job');
 const Interview = require('../models/Interview');
 
 
+// TODO: refactor all the methods
+
 const InterviewRouter = {
   async all(req, res) {
     console.log(req.params)
