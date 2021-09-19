@@ -12,13 +12,13 @@ Association
 	A user will have many jobs aka -> "one to many relation". A job will have many interviews
 
 
-User : 
+### User : 
 - Name ->  str
 - email ->  str
 - password ->  str
 - favorites ->  array of top 3 three jobs (method)
 
-Job: 
+### Job: 
 - position ->  str
 - company name ->  str
 - hopeful salary ->  int
@@ -26,6 +26,6 @@ Job:
 - offer ->  NIL if not given 
 - interviews ->  array of interview dates (method)
 
-Interview: 
+### Interview: 
  - date -> date
  - notes - str
