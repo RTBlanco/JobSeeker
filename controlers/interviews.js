@@ -77,7 +77,49 @@ const InterviewRouter = {
   },
 
   async edit (req, res) {
+    const data = {...req.body}
+    try {
+      if (req.params.jobId){
+        const job = await Job.findByPk(req.params.jobId)
+        if (!job) {
+          throw new Error("Cant edit interview for current job")
+        } 
 
+        const interview = await Interview.findOne({
+          where: {
+            jobId: req.params.jobId,
+            id: req.params.id
+          }
+        })
+
+        if (!interview) {
+          throw new Error("No such Interview found for job ")
+        }
+
+        const updatedInt = await interview.update(data)
+        req.json(updatedInt)
+      } else {
+        const interview = await Interview.findByPk(req.params.jobId)
+        if(!interview) {
+          throw new Error("Interview not found")
+        }
+
+        const updatedInt = await interview.update(data)
+        res.json(updatedInt)
+      }
+    } catch (e) {
+      if (!e.errors) {
+        res.status(422).json({
+          error: e.message
+        })
+      } else {
+        console.log("here =>", e)
+        const errors = e.errors.map(er => er.message)
+        res.status(422).json({
+          errors: {body: [errors]}
+        })
+      }
+    }
   },
 
   async delete (req, res) {
