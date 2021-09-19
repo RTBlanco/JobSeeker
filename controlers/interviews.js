@@ -4,6 +4,7 @@ const Interview = require('../models/Interview');
 
 const InterviewRouter = {
   async all(req, res) {
+    console.log(req.params)
     if(req.params.jobId){
       const interviews = await Interview.findAll({
         where: {
