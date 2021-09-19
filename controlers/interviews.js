@@ -41,7 +41,7 @@ const InterviewRouter = {
         res.json(interview)
       } else {
         const interview = await Interview.findByPk(req.params.id)
-        if (interview) {
+        if (!interview) {
           throw new Error("No such Interview found")
         }
         res.json(interview)
@@ -100,7 +100,7 @@ const InterviewRouter = {
         const updatedInt = await interview.update(data)
         req.json(updatedInt)
       } else {
-        const interview = await Interview.findByPk(req.params.jobId)
+        const interview = await Interview.findByPk(req.params.id)
         if(!interview) {
           throw new Error("Interview not found")
         }
@@ -124,7 +124,35 @@ const InterviewRouter = {
   },
 
   async delete (req, res) {
-
+    try {
+      if (req.params.jobId) {
+        const job = await Job.findByPk(req.params.jobId)
+        if (!job) {
+          throw new Error("Cant delet interview for job")
+        }
+        const interview = await Interview.findOne({
+          where: {
+            jobId: job.id,
+            id: req.params.id
+          }
+        })
+        if(!interview) {
+          throw new Error("No such interview found for job")
+        }
+        
+        const deleteJob = await interview.destroy()
+        res.json(deleteJob)
+      } else {
+        const interview = await Interview.findByPk(req.params.id)
+        if (!interview) {
+          throw new Error("N interview found")
+        }
+        const deletedInterview = await interview.destroy()
+        res.json(deletedInterview)
+      }
+    } catch (e) {
+      
+    }
   }
 }
 
