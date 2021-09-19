@@ -140,12 +140,12 @@ const InterviewRouter = {
           throw new Error("No such interview found for job")
         }
         
-        const deleteJob = await interview.destroy()
-        res.json(deleteJob)
+        const deletedInterview = await interview.destroy()
+        res.json(deletedInterview)
       } else {
         const interview = await Interview.findByPk(req.params.id)
         if (!interview) {
-          throw new Error("N interview found")
+          throw new Error("No interview found")
         }
         const deletedInterview = await interview.destroy()
         res.json(deletedInterview)
