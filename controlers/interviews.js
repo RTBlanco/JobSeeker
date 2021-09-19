@@ -58,9 +58,10 @@ const InterviewRouter = {
 
   async new (req, res) {
     const data = {...req.body}
+
     try {
       if (req.params.jobId){
-        const job = await job.findByPk(req.params.jobId)
+        const job = await Job.findByPk(req.params.jobId)
         if (!job) {
           throw new Error("can not create an inteview for current job")
         }
@@ -72,10 +73,21 @@ const InterviewRouter = {
         res.json(interview)
       }
     } catch (e) {
-      const errors = e.errors.map(er => er.message)
-      return res.status(422).json({
-        errors: {body: [errors]}
-      })
+      // const errors = e.errors.map(er => er.message)
+      // return res.status(422).json({
+      //   errors: {body: [errors]}
+      // })
+      if (!e.errors) {
+        res.status(422).json({
+          error: e.message
+        })
+      } else {
+        console.log("here =>", e)
+        const errors = e.errors.map(er => er.message)
+        res.status(422).json({
+          errors: {body: [errors]}
+        })
+      }
     }
   },
 
@@ -153,7 +165,9 @@ const InterviewRouter = {
         res.json(deletedInterview)
       }
     } catch (e) {
-      
+      res.status(422).json({
+        error: e.message
+      })
     }
   }
 }

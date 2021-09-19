@@ -5,6 +5,7 @@ const jobRouter = require('./jobs')
 
 
 
+
 router.get('/', userController.all);
 router.get('/:id', userController.show)
 router.post('/new', userController.new)
