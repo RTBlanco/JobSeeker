@@ -11,15 +11,18 @@ Interview.init({
     type: DataTypes.DATE,
     allowNull: false,
     validate: {
+      isDate: {
+        msg: "Date is not valid"
+      },
       notNull: {
-        msg: "Date Can not be empty"
+        msg: "Date can not be empty"
       }
     }
   }, 
 
   notes: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   }
 },{
   sequelize,
