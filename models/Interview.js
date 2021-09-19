@@ -22,7 +22,7 @@ Interview.init({
 
   notes: {
     type: DataTypes.STRING,
-    allowNull: true
+    // allowNull: true
   }
 },{
   sequelize,
