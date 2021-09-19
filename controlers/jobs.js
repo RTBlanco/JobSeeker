@@ -24,6 +24,7 @@ const jobsController = {
         if(!user) {
           throw new Error("cant show job with current user")
         }
+        
         const job = await Job.findOne({
           where: {
             userId: user.id,

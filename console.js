@@ -18,3 +18,4 @@ Interview.belongsTo(Job)
 const replServer = repl.start({});
 replServer.context.User = User
 replServer.context.Job = Job
+replServer.context.Interview = Interview
