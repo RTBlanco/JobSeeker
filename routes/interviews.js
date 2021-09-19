@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const InterviewRouter = require('../controlers/interviews')
-const jobRouter = require('./jobs')
+
 
 
 
@@ -12,6 +12,6 @@ router.patch('/:id', InterviewRouter.edit)
 router.delete('/:id', InterviewRouter.delete)
 
 // nested route
-router.use('/:jobId/interviews', jobRouter)
+
 
 module.exports = router;
