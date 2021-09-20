@@ -58,6 +58,9 @@ const jobsController = {
         if (!user) {
           throw new Error('Can not create new job with current user')
         }
+
+        // const job = await Job.create({...data, UserId: user.id})
+        // res.json(job)
         const job = await user.createJob(data)
         res.json(job)
       } else {
