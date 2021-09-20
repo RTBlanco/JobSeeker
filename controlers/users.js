@@ -3,6 +3,11 @@ const User = require('../models/User');
 // TODO: add user authentication
 
 const userController = {
+
+  async login (req, res) {
+
+  },
+
   
   async all (req, res) {
     const users = await User.findAll();
