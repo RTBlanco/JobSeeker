@@ -6,7 +6,9 @@ const bcrypt = require('bcrypt')
 class User extends Model {
 
   // TODO: create Method for Favorites
-  // TODO: add password encryption
+  async isValid(password) {
+    return await bcrypt.compare(password, this.password)
+  }
 }
 
 User.init({
