@@ -36,17 +36,20 @@ User.init({
     allowNull: false,
     validate: {
       len: [4, 50]
-    },
-    async set(value) {
-      bcrypt.hash(value, 10, (er, hash) =>{
-        this.setDataValue(hash)
-      })
     }
   }
 
 },{
+  hooks: {
+    beforeCreate: async (user, options) => {
+      const hashedPassword = await bcrypt.hash(user.password, 10)
+      console.log("hased password => ",hashedPassword)
+      user.password = hashedPassword
+    }
+  },
   sequelize,
   modelName: 'User'
 })
+
 
 module.exports = User;
