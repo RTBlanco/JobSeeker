@@ -5,7 +5,12 @@ const User = require('../models/User');
 const userController = {
 
   async login (req, res) {
+    const user = await User.findByPk(req.params.email)
+    if (!user) {
+      throw new Error("User not found")
+    }
 
+    
   },
 
   
