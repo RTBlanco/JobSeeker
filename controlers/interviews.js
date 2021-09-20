@@ -73,10 +73,6 @@ const InterviewRouter = {
         res.json(interview)
       }
     } catch (e) {
-      // const errors = e.errors.map(er => er.message)
-      // return res.status(422).json({
-      //   errors: {body: [errors]}
-      // })
       if (!e.errors) {
         res.status(422).json({
           error: e.message
