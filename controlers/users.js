@@ -58,8 +58,8 @@ const userController = {
     try {
 
       const user = await User.create(data)
-      console.log(user)
-      res.json(user)
+      const token = await sign(user)
+      res.json({...user.dataValues, token})
 
     } catch(e){
 
