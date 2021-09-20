@@ -4,6 +4,7 @@ const sequelize = require('../db/dbConnection');
 class User extends Model {
 
   // TODO: create Method for Favorites
+  // TODO: add password encryption
 }
 
 User.init({
