@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodmon app.js",
+    "start": "nodemon app.js",
     "console": "node --experimental-repl-await ./console.js"
   },
   "dependencies": {
