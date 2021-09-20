@@ -1,5 +1,5 @@
 const User = require('../models/User');
-
+const {sign, decode} = require('../utils/jwt')
 // TODO: add user authentication
 
 const userController = {
@@ -13,11 +13,12 @@ const userController = {
       }  
 
       if (await user.isValid(req.body.password)) {
-        res.json(user)
+        const token = await sign(user)
+        res.json({...user.dataValues, token})
       } else {
         throw new Error(" Incorrect email or password")
       }
-      
+
     } catch (e) {
       res.status(404).json({
         error: e.message
@@ -35,8 +36,8 @@ const userController = {
   },
   
   async show (req, res) {
+    console.log(req.user)
     try {
-
       const user = await User.findByPk(req.params.id)
       if (!user){
         throw new Error('No such user found')
