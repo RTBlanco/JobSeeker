@@ -17,6 +17,7 @@ const userController = {
       } else {
         throw new Error(" Incorrect email or password")
       }
+      
     } catch (e) {
       res.status(404).json({
         error: e.message
