@@ -59,17 +59,23 @@ const jobsController = {
           throw new Error('Can not create new job with current user')
         }
         const job = await user.createJob(data)
-        console.log('running')
         res.json(job)
       } else {
         const job = await Job.create(data)
         res.json(job)
       }
     } catch (e) {
-      const errors = e.errors.map(er => er.message)
-      return res.status(422).json({
-        errors: {body: [errors]}
-      })
+      if (!e.errors) {
+        res.status(422).json({
+          error: e.message
+        })
+      } else {
+        console.log("here =>", e)
+        const errors = e.errors.map(er => er.message)
+        res.status(422).json({
+          errors: {body: [errors]}
+        })
+      }
     }
   },
 
