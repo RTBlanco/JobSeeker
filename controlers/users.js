@@ -12,8 +12,11 @@ const userController = {
         throw new Error("User not found")
       }  
 
-      res.json(user)
-
+      if (await user.isValid(req.body.password)) {
+        res.json(user)
+      } else {
+        throw new Error(" Incorrect email or password")
+      }
     } catch (e) {
       res.status(404).json({
         error: e.message
