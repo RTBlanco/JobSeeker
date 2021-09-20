@@ -30,8 +30,8 @@ Job.hasMany(Interview, {onDelete: "CASCADE"})
 Interview.belongsTo(Job)
 
 
-
-const sync = async () => await sequalize.sync({alter:true})
+// consider using migrations 
+const sync = async () => await sequalize.sync()
 sync()
 
 app.use(logger('dev'));
