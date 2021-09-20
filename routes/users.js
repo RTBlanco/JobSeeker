@@ -3,7 +3,7 @@ const router = express.Router({mergeParams: true});
 const userController = require('../controlers/users')
 const jobRouter = require('./jobs')
 
-
+router.post('/login', userController.login)
 router.get('/', userController.all);
 router.get('/:id', userController.show)
 router.post('/new', userController.new)
