@@ -5,13 +5,19 @@ const User = require('../models/User');
 const userController = {
 
   async login (req, res) {
+    console.log(req.body)
     try {
-      const user = await User.findByPk(req.params.email)
+      const user = await User.findOne({where: {email: req.body.email}})
       if (!user) {
         throw new Error("User not found")
       }  
-    } catch (error) {
-      
+
+      res.json(user)
+
+    } catch (e) {
+      res.status(404).json({
+        error: e.message
+      })
     }
     
 
