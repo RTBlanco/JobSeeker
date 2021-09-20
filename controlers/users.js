@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const Job = require('../models/Job');
+
 const {sign, decode} = require('../utils/jwt')
 // TODO: add user authentication
 
@@ -24,9 +26,6 @@ const userController = {
         error: e.message
       })
     }
-    
-
-
   },
 
   
@@ -38,7 +37,7 @@ const userController = {
   async show (req, res) {
     console.log(req.user)
     try {
-      const user = await User.findByPk(req.params.id)
+      const user = await User.findByPk(req.params.id, {include: {all: true, nested: true}})
       if (!user){
         throw new Error('No such user found')
       }
