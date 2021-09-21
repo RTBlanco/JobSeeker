@@ -57,10 +57,8 @@ const userController = {
 
   async new (req, res) {
     const data = {...req.body}
-    console.log(data)
 
     try {
-
       const user = await User.create(data)
       const token = await sign(user)
       res.json({...user.dataValues, token})
