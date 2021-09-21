@@ -9,7 +9,7 @@ router.post('/login', userController.login)
 // router.get('/:id', authByToken, userController.show)
 router.get('/', authByToken, userController.show)
 router.post('/new', userController.new)
-router.patch('/', userController.edit)
+router.patch('/', authByToken, userController.edit)
 router.delete('/', userController.delete)
 
 // nested route
