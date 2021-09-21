@@ -1,5 +1,6 @@
-const Job = require('../models/Job');
-const User = require('../models/User');
+// const Job = require('../models/job');
+// const User = require('../models/user');
+const { User, Job } = require('../models');
 
 const jobsController = {
 
@@ -7,7 +8,7 @@ const jobsController = {
     if (req.params.userId) {
       const jobs = await Job.findAll({
         where: {
-          userId: req.params.userId
+          UserId: req.params.userId
         }
       });
       res.json(jobs)

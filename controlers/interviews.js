@@ -1,5 +1,4 @@
-const Job = require('../models/Job');
-const Interview = require('../models/Interview');
+const {Interview, Job} = require('../models')
 
 
 // TODO: refactor all the methods

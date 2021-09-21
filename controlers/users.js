@@ -1,5 +1,5 @@
-const User = require('../models/User');
-const Job = require('../models/Job');
+const { User, Job } = require('../models');
+// const Job = require('../models');
 
 const {sign, decode} = require('../utils/jwt')
 // TODO: add user authentication
@@ -30,8 +30,13 @@ const userController = {
 
   
   async all (req, res) {
-    const users = await User.findAll();
-    res.send(users)
+    try {
+      const users = await User.findAll();
+      res.send(users)  
+    } catch (error) {
+      res.json(error.message)
+    }
+    
   },
   
   async show (req, res) {
