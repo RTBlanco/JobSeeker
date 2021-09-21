@@ -29,3 +29,8 @@ Association
 ### Interview: 
  - date -> date
  - notes - str
+
+
+# Note - Need to start postgresql server to use 
+  - [Windows Wsl2](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-postgresql)
+  
