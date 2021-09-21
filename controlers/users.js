@@ -1,5 +1,4 @@
 const { User, Job } = require('../models');
-// const Job = require('../models');
 
 const {sign, decode} = require('../utils/jwt')
 // TODO: add user authentication
