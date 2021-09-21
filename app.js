@@ -5,8 +5,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
-const sequalize = require('./db/dbConnection');
-
 const multer = require('multer');
 const upload = multer();
 
