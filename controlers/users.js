@@ -28,20 +28,20 @@ const userController = {
   },
 
   
-  async all (req, res) {
-    try {
-      const users = await User.findAll();
-      res.send(users)  
-    } catch (error) {
-      res.json(error.message)
-    }
+  // async all (req, res) {
+  //   try {
+  //     const users = await User.findAll();
+  //     res.send(users)  
+  //   } catch (error) {
+  //     res.json(error.message)
+  //   }
     
-  },
-  
+  // }, 
+
   async show (req, res) {
     console.log(req.user)
     try {
-      const user = await User.findByPk(req.params.id, {include: {all: true, nested: true}})
+      const user = await User.findByPk(req.user.id, {include: {all: true, nested: true}})
       if (!user){
         throw new Error('No such user found')
       }

@@ -5,6 +5,7 @@ module.exports.sign = async (user) => {
   return new Promise((resolve, reject) => {
     jwt.sign(
       {
+        id: user.id,
         email: user.email,
       },
       JWT_SECRET,
