@@ -27,7 +27,7 @@ app.use(upload.array())
 app.use(cors())
 
 // routes 
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use('/jobs', jobsRouter);
 app.use('/interviews', InterviewRouter);
 
