@@ -2,20 +2,34 @@ const { User, Job } = require('../models');
 
 const jobsController = {
 
-  async all (req, res) {
-    if (req.params.userId) {
-      const jobs = await Job.findAll({
-        where: {
-          UserId: req.params.userId
-        }
-      });
+  // async all (req, res) {
+  //   if (req.params.userId) {
+  //     const jobs = await Job.findAll({
+  //       where: {
+  //         UserId: req.params.userId
+  //       }
+  //     });
+  //     res.json(jobs)
+  //   } else {
+  //     const jobs = await Job.findAll()
+  //     res.json(jobs)
+  //   }
+  // },
+
+  async all(req, res) {
+    try {
+      const user = await User.findByPk(req.user.id)
+      if (!user) {
+        throw new Error("User not logged in")
+      }
+      const jobs = await Job.findAll({where:{UserId: user.id}, include: {all: true, nested: true}})
       res.json(jobs)
-    } else {
-      const jobs = await Job.findAll()
-      res.json(jobs)
+    } catch (error) {
+      res.send(error.message)
     }
   },
   
+  // TODO: add user auth
   async show (req, res) {
     try {
       if(req.params.userId) {
