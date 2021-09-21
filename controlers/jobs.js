@@ -1,5 +1,3 @@
-// const Job = require('../models/job');
-// const User = require('../models/user');
 const { User, Job } = require('../models');
 
 const jobsController = {
