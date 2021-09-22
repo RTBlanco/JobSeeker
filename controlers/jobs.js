@@ -42,6 +42,10 @@ const jobsController = {
         where: {
           id: req.params.id,
           UserId: req.user.id
+        },
+        include: {
+          all: true,
+          nested: true
         }
       })
 
