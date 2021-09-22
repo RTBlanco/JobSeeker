@@ -95,7 +95,7 @@ const jobsController = {
     try {
       const job = await Job.findOne({
         where: {
-          userId: req.user.id,
+          UserId: req.user.id,
           id: req.params.id
         }
       })
@@ -104,7 +104,7 @@ const jobsController = {
       }
       const updatedJob = await job.update(data)
       res.json(updatedJob)
-      
+
     } catch (e) {
 
       if (!e.errors) {
@@ -123,30 +123,18 @@ const jobsController = {
 
   async delete (req, res) {
     try {
-      if(req.params.userId) {
-        const user = await User.findByPk(req.params.userId)
-        if(!user) {
-          throw new Error("cant delete job with current user")
+      const job = await Job.findOne({
+        where: {
+          UserId: req.user.id,
+          id: req.params.id
         }
-        const job = await Job.findOne({
-          where: {
-            userId: user.id,
-            id: req.params.id
-          }
-        })
-        if (!job){
-          throw new Error(`No such job found for user`)
-        }
-        const deletedJob = await job.destroy()
-        res.json(deletedJob)
-      } else {
-        const job = await Job.findByPk(req.params.id)
-        if (!job) {
-          throw new Error('No such job found')
-        } 
-        const deletedJob = await job.destroy()
-        res.json(deletedJob)
+      })
+      if (!job){
+        throw new Error(`No such job found for user`)
       }
+      
+      const deletedJob = await job.destroy()
+      res.json(deletedJob)
     } catch (e) {
       res.status(422).json({
         error: e.message
