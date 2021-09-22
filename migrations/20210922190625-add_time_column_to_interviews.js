@@ -11,7 +11,8 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       await queryInterface.addColumn('Interviews', 'time', {
-        type: Sequelize.DataTypes.TIME
+        type: Sequelize.DataTypes.TIME,
+        defaultValue: "13:00"
       },{transaction})
 
       await transaction.commit()
