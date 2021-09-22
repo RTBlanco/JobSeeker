@@ -138,11 +138,8 @@ const InterviewRouter = {
         where: {
           id: req.params.jobId,
           UserId: req.user.id
-        }
-        , 
-        include: {
-          Interview
-        }
+        }, 
+        include: Interview
       })
 
       if (!job) {
