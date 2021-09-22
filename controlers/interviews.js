@@ -6,16 +6,25 @@ const {Interview, Job} = require('../models')
 const InterviewRouter = {
   async all(req, res) {
     console.log(req.params)
-    if(req.params.jobId){
-      const interviews = await Interview.findAll({
+    try {
+      const job = await Job.findOne({
         where: {
-          jobId: req.params.jobId
+          UserId: req.user.id,
+          id: req.params.jobId
         }
-      });
+      })
+
+      if (!job) {
+        throw new Error("Cant access Interviews for job")
+      }
+
+      const interviews = await job.getInterviews()
       res.json(interviews)
-    } else {
-      const interviews = await Interview.findAll();
-      res.json(interviews)
+      
+    } catch (error) {
+      res.json({
+        error: error.message
+      })
     }
   },
    
