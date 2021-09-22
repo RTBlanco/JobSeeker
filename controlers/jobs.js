@@ -1,4 +1,4 @@
-const { User, Job } = require('../models');
+const { User, Job, Interview } = require('../models');
 
 const jobsController = {
 
@@ -22,7 +22,7 @@ const jobsController = {
       if (!user) {
         throw new Error("User not logged in")
       }
-      const jobs = await Job.findAll({where:{UserId: user.id}, include: {all: true, nested: true}})
+      const jobs = await Job.findAll({where:{UserId: user.id}, include: Interview})
       res.json(jobs)
     } catch (error) {
       res.send(error.message)
@@ -43,10 +43,7 @@ const jobsController = {
           id: req.params.id,
           UserId: req.user.id
         },
-        include: {
-          all: true,
-          nested: true
-        }
+        include: Interview
       })
 
       if(!job) {
