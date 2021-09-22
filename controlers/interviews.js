@@ -152,7 +152,7 @@ const InterviewRouter = {
       } 
 
       const interviews = await Job.getInterviews()
-      const interview = interviews.find(i => i.id === req.params.id ) 
+      const interview = interviews.find(i => i.id === paseInt(req.params.id)) 
 
       if (!interview) {
         throw new Error("No such Interview found for job ")
