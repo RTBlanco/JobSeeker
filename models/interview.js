@@ -27,7 +27,9 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }, 
-  
+    time: {
+      type: DataTypes.TIME
+    },
     notes: {
       type: DataTypes.STRING,
       // allowNull: true
