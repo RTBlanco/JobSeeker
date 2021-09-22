@@ -33,22 +33,25 @@ const InterviewRouter = {
       
       const job = await Job.findOne({
         where: {
-          id: req.params.id,
+          id: req.params.jobId,
           UserId: req.user.id
         }
         , 
-        include: {
-          Interview
-        }
+        include: Interview
       })
 
       if(!job) {
         throw new Error("cant show interviews for current job")
       }
       
-      const interviews = await Job.getInterviews()
-      const interview = interviews.find(i => i.id === req.params.id ) 
-
+      const interviews = await job.getInterviews()
+      const interview = interviews.find(i => {
+        console.log(i.id)
+        if (i.id === req.params.id) {
+          return i
+        }
+      } ) 
+      console.log(interview)
       if (!interview) {
         throw new Error("No such Interview found for job ")
       }
