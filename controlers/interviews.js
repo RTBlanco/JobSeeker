@@ -30,32 +30,31 @@ const InterviewRouter = {
    
   async show(req, res) {
     try {
-      if (req.params.jobId){
-        const job = await Job.findByPk(req.params.jobId)
-
-        if(!job) {
-          throw new Error("cant show interviews for current job")
+      
+      const job = await Job.findOne({
+        where: {
+          id: req.params.id,
+          UserId: req.user.id
         }
-        
-        const interview = await Interview.findOne({
-          where: {
-            jobId: req.params.jobId,
-            id: req.params.id
-          }
-        })
-
-        if (!interview) {
-          throw new Error("No such Interview found for job ")
+        , 
+        include: {
+          Interview
         }
+      })
 
-        res.json(interview)
-      } else {
-        const interview = await Interview.findByPk(req.params.id)
-        if (!interview) {
-          throw new Error("No such Interview found")
-        }
-        res.json(interview)
+      if(!job) {
+        throw new Error("cant show interviews for current job")
       }
+      
+      const interviews = await Job.getInterviews()
+      const interview = interviews.find(i => i.id === req.params.id ) 
+
+      if (!interview) {
+        throw new Error("No such Interview found for job ")
+      }
+
+      res.json(interview)
+      
     } catch(e) {
       return res.status(404).json({
         error: e.message
