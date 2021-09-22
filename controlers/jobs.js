@@ -132,9 +132,9 @@ const jobsController = {
       if (!job){
         throw new Error(`No such job found for user`)
       }
-      
-      const deletedJob = await job.destroy()
-      res.json(deletedJob)
+
+      await job.destroy()
+      res.json(job)
     } catch (e) {
       res.status(422).json({
         error: e.message
