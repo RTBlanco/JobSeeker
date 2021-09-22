@@ -35,8 +35,7 @@ const InterviewRouter = {
         where: {
           id: req.params.jobId,
           UserId: req.user.id
-        }
-        , 
+        }, 
         include: Interview
       })
 
@@ -45,13 +44,8 @@ const InterviewRouter = {
       }
       
       const interviews = await job.getInterviews()
-      const interview = interviews.find(i => {
-        console.log(i.id)
-        if (i.id === req.params.id) {
-          return i
-        }
-      } ) 
-      console.log(interview)
+      const interview = interviews.find(int => int.id === parseInt(req.params.id))
+
       if (!interview) {
         throw new Error("No such Interview found for job ")
       }
