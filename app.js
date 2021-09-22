@@ -28,7 +28,7 @@ app.use(cors())
 
 // routes 
 app.use('/user', usersRouter);
-app.use('/jobs', jobsRouter);
+app.use('/user/jobs', jobsRouter);
 app.use('/interviews', InterviewRouter);
 
 app.listen(3000, () => {
