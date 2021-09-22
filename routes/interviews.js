@@ -9,8 +9,5 @@ router.post('/new', authByToken, InterviewRouter.new)
 router.patch('/:id', authByToken, InterviewRouter.edit)
 router.delete('/:id', authByToken, InterviewRouter.delete)
 
-// nested route
-// router.use('/:jobId/interviews', jobRouter)
-
 
 module.exports = router;
