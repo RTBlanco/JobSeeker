@@ -65,12 +65,12 @@ const InterviewRouter = {
 
   async new (req, res) {
     const data = {...req.body}
-
+    console.log(req.params)
     try {
       
       const job = await Job.findOne({
         where: {
-          id: req.params.id,
+          id: req.params.jobId,
           UserId: req.user.id
         }
       })
