@@ -32,11 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }, 
-    // time: {
-    //   allowNull: false,
-    //   type: DataTypes.TIME,
-    //   defaultValue: "14:00"
-    // },
+    
     notes: {
       type: DataTypes.STRING,
       // allowNull: true
