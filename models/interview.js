@@ -24,11 +24,18 @@ module.exports = (sequelize, DataTypes) => {
         },
         notNull: {
           msg: "Date can not be empty"
+        },
+
+        isAfter: {
+          args: new Date().toLocaleDateString(),
+          msg: "Interviews can't be set same day as creation"
         }
       }
     }, 
     time: {
-      type: DataTypes.TIME
+      allowNull: false,
+      type: DataTypes.TIME,
+      defaultValue: "14:00"
     },
     notes: {
       type: DataTypes.STRING,
