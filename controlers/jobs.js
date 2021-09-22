@@ -92,32 +92,19 @@ const jobsController = {
 
   async edit (req, res) {
     const data = {...req.body}
-    console.log(data)
     try {
-      if (req.params.userId) {
-        const user = await User.findByPk(req.params.userId)
-        if (!user) {
-          throw new Error('Cant edit Job with current user')
+      const job = await Job.findOne({
+        where: {
+          userId: req.user.id,
+          id: req.params.id
         }
-        const job = await Job.findOne({
-          where: {
-            userId: user.id,
-            id: req.params.id
-          }
-        })
-        if(!job) {
-          throw new Error("Job not found for current User")
-        }
-        const updatedJob = await job.update(data)
-        res.json(updatedJob)
-      } else {
-        const job = await Job.findByPk(req.params.id)
-        if(!job) {
-          throw new Error("Job not found")
-        }
-        const updatedJob = await job.update(data)
-        res.json(updatedJob)
+      })
+      if(!job) {
+        throw new Error("Job not found for current User")
       }
+      const updatedJob = await job.update(data)
+      res.json(updatedJob)
+      
     } catch (e) {
 
       if (!e.errors) {
