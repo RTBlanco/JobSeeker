@@ -62,20 +62,15 @@ const jobsController = {
   async new (req, res) {
     const data = {...req.body}
     try {
-      if (req.params.userId) {
-        const user = await User.findByPk(req.params.userId)
-        if (!user) {
-          throw new Error('Can not create new job with current user')
-        }
-
-        // const job = await Job.create({...data, UserId: user.id})
-        // res.json(job)
-        const job = await user.createJob(data)
-        res.json(job)
-      } else {
-        const job = await Job.create(data)
-        res.json(job)
+      
+      const user = await User.findByPk(req.user.id)
+      if (!user) {
+        throw new Error('Can not create new job with current user')
       }
+
+      const job = await user.createJob(data)
+      res.json(job)
+
     } catch (e) {
       if (!e.errors) {
         res.status(422).json({
