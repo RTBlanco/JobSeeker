@@ -30,31 +30,59 @@ const jobsController = {
   },
   
   // TODO: add user auth
+  // async show (req, res) {
+  //   try {
+  //     if(req.params.userId) {
+  //       const user = await User.findByPk(req.params.userId)
+  //       if(!user) {
+  //         throw new Error("cant show job with current user")
+  //       }
+        
+  //       const job = await Job.findOne({
+  //         where: {
+  //           userId: user.id,
+  //           id: req.params.id
+  //         }
+  //       })
+  //       if (!job){
+  //         throw new Error(`No such job found for user`)
+  //       }
+  //       res.json(job)
+  //     } else {
+  //       const job = await Job.findByPk(req.params.id)
+  //       if (!job) {
+  //         throw new Error ("No such job found")
+  //       }
+  //       res.json(job)
+  //     }
+  //   } catch(e){
+
+  //     return res.status(404).json({
+  //       error: e.message
+  //     })
+  //   }
+  // }, 
+
   async show (req, res) {
     try {
-      if(req.params.userId) {
-        const user = await User.findByPk(req.params.userId)
-        if(!user) {
-          throw new Error("cant show job with current user")
+      // Might not need to use this 
+      // const user = await User.findByPk(req.user.id)
+      // if (!user) {
+      //   throw new Error("Unable to show job for user")
+      // }
+      const job = await Job.findOne({
+        where: {
+          id: req.params.id,
+          UserId: req.user.id
         }
-        
-        const job = await Job.findOne({
-          where: {
-            userId: user.id,
-            id: req.params.id
-          }
-        })
-        if (!job){
-          throw new Error(`No such job found for user`)
-        }
-        res.json(job)
-      } else {
-        const job = await Job.findByPk(req.params.id)
-        if (!job) {
-          throw new Error ("No such job found")
-        }
-        res.json(job)
+      })
+
+      if(!job) {
+        throw new Error("Job does not exist for current user")
       }
+
+      res.json(job)
+      
     } catch(e){
 
       return res.status(404).json({
