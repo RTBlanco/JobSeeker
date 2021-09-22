@@ -30,6 +30,13 @@ Association
  - date -> date
  - notes - str
 
+## Routes:
+  - User 
+    - Login -> ```/user/login```
+    - signup / create new user -> ```/user/new```
+    - Get user -> ```/user```
+    - edit user -> ```/user/```
+    - delete -> ```/user/```
 
 # Note - Need to start postgresql server to use 
   - [Windows Wsl2](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-postgresql)
