@@ -2,20 +2,6 @@ const { User, Job, Interview } = require('../models');
 
 const jobsController = {
 
-  // async all (req, res) {
-  //   if (req.params.userId) {
-  //     const jobs = await Job.findAll({
-  //       where: {
-  //         UserId: req.params.userId
-  //       }
-  //     });
-  //     res.json(jobs)
-  //   } else {
-  //     const jobs = await Job.findAll()
-  //     res.json(jobs)
-  //   }
-  // },
-
   async all(req, res) {
     try {
       const user = await User.findByPk(req.user.id)
@@ -28,16 +14,10 @@ const jobsController = {
       res.send(error.message)
     }
   },
-  
-  // TODO: add user auth 
+   
 
   async show (req, res) {
     try {
-      // Might not need to use this 
-      // const user = await User.findByPk(req.user.id)
-      // if (!user) {
-      //   throw new Error("Unable to show job for user")
-      // }
       const job = await Job.findOne({
         where: {
           id: req.params.id,
