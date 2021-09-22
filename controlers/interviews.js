@@ -67,18 +67,19 @@ const InterviewRouter = {
     const data = {...req.body}
 
     try {
-      if (req.params.jobId){
-        const job = await Job.findByPk(req.params.jobId)
-        if (!job) {
-          throw new Error("can not create an inteview for current job")
+      
+      const job = await Job.findOne({
+        where: {
+          id: req.params.id,
+          UserId: req.user.id
         }
-
-        const interview = await job.createInterview(data)
-        res.json(interview)
-      } else {
-        const interview = await Interview.create(data)
-        res.json(interview)
+      })
+      if (!job) {
+        throw new Error("can not create an inteview for current job")
       }
+
+      const interview = await job.createInterview(data)
+      res.json(interview)
     } catch (e) {
       if (!e.errors) {
         res.status(422).json({
