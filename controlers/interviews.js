@@ -97,20 +97,18 @@ const InterviewRouter = {
     try {
       const job = await Job.findOne({
         where: {
-          id: req.params.id,
+          id: req.params.jobId,
           UserId: req.user.id
         }
         , 
-        include: {
-          Interview
-        }
+        include: Interview
       })
 
       if (!job) {
         throw new Error("Cant edit interview for current job")
       } 
 
-      const interviews = await Job.getInterviews()
+      const interviews = await job.getInterviews()
       const interview = interviews.find(i => i.id === parseInt(req.params.id) ) 
 
       if (!interview) {
@@ -118,7 +116,7 @@ const InterviewRouter = {
       }
 
       const updatedInt = await interview.update(data)
-      req.json(updatedInt)
+      res.json(updatedInt)
     } catch (e) {
       if (!e.errors) {
         res.status(422).json({
@@ -138,7 +136,7 @@ const InterviewRouter = {
     try {
       const job = await Job.findOne({
         where: {
-          id: req.params.id,
+          id: req.params.jobId,
           UserId: req.user.id
         }
         , 
@@ -151,7 +149,7 @@ const InterviewRouter = {
         throw new Error("Cant edit interview for current job")
       } 
 
-      const interviews = await Job.getInterviews()
+      const interviews = await job.getInterviews()
       const interview = interviews.find(i => i.id === paseInt(req.params.id)) 
 
       if (!interview) {
