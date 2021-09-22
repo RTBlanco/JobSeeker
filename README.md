@@ -30,7 +30,7 @@ Association
  - date -> date
  - notes - str
 
-## Routes:
+## Routes (TODO: Turn this into a table): 
   - User 
     - Login -> ```/user/login```
     - signup / create new user -> ```/user/new```
