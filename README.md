@@ -24,7 +24,7 @@ Association
 - hopeful salary ->  int
 - status ->  interviewing | rejected ->  str
 - offer ->  NIL if not given 
-- interviews ->  array of interview dates (method)
+- interviews ->  array of interview dates 
 
 ### Interview: 
  - date -> date
