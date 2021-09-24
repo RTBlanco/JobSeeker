@@ -30,7 +30,7 @@ Association
  - date -> date
  - notes - str
 
-# Routes (TODO: Turn this into a table): 
+# Routes
 ## User Routes
 | Action | Verb | Route |
 |--------|------|-------|
