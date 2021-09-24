@@ -43,10 +43,10 @@ Association
 ## Job 
 | Action | Verb | Route |
 |--------|------|-------| 
-| FETCH ALL JOBS | GET | ```/user/jobs/:jobId``` |
-| FETCH JOB | GET | ```/user/jobs``` |
-| EDIT JOB | PATCH | ```/user/``` |
-| DELETE JOB | DELETE | ```/user``` |
+| FETCH ALL JOBS | GET | ```/user/jobs``` |
+| FETCH JOB | GET | ```/user/jobs/:jobId``` |
+| EDIT JOB | PATCH | ```/user/jobs/:jobId``` |
+| DELETE JOB | DELETE | ```/user/jobs/:jobId``` |
 
 
 # Note - Need to start postgresql server to use 
