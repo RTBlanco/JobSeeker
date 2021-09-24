@@ -38,6 +38,13 @@ Association
     - edit user -> ```/user/```
     - delete -> ```/user/```
 
+  - User
+    | Action | Verb | Route |
+    |--------|------|-------|
+    | LOGIN  | POST | ```/user/login``` |
+    
+
+
 # Note - Need to start postgresql server to use 
   - [Windows Wsl2](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-postgresql)
   
