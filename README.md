@@ -32,13 +32,16 @@ Association
 
 # Routes (TODO: Turn this into a table): 
 ## User
-  | Action | Verb | Route |
-  |--------|------|-------|
-  | LOGIN  | POST | ```/user/login``` | 
-  | SIGNUP | POST | ```/user/new``` |
-  | FETCH USER | GET | ```/user``` |
-  | EDIT USER | PATCH | ```/user``` |
-  | DELETE USER | DELETE | ```/user``` |
+| Action | Verb | Route |
+|--------|------|-------|
+| LOGIN  | POST | ```/user/login``` | 
+| SIGNUP | POST | ```/user/new``` |
+| FETCH USER | GET | ```/user``` |
+| EDIT USER | PATCH | ```/user``` |
+| DELETE USER | DELETE | ```/user``` |
+
+## Job 
+
 
 
 # Note - Need to start postgresql server to use 
