@@ -41,7 +41,12 @@ Association
 | DELETE USER | DELETE | ```/user``` |
 
 ## Job 
-
+| Action | Verb | Route |
+|--------|------|-------| 
+| FETCH JOB | GET | ```/user``` |
+| FETCH ALL JOBS | GET | ```/user``` |
+| EDIT JOB | PATCH | ```/user/``` |
+| DELETE JOB | DELETE | ```/user``` |
 
 
 # Note - Need to start postgresql server to use 
