@@ -43,8 +43,8 @@ Association
 ## Job 
 | Action | Verb | Route |
 |--------|------|-------| 
-| FETCH JOB | GET | ```/user``` |
-| FETCH ALL JOBS | GET | ```/user``` |
+| FETCH ALL JOBS | GET | ```/user/jobs/:jobId``` |
+| FETCH JOB | GET | ```/user/jobs``` |
 | EDIT JOB | PATCH | ```/user/``` |
 | DELETE JOB | DELETE | ```/user``` |
 
