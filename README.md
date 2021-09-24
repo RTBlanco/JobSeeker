@@ -30,7 +30,7 @@ Association
  - date -> date
  - notes - str
 
-# Routes
+# API Routes
 ## User Routes
 | Action | Verb | Route |
 |--------|------|-------|
