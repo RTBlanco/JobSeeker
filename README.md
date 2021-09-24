@@ -26,7 +26,7 @@ Association
 - offer ->  NIL if not given 
 - interviews ->  array of interview dates 
 
-### Interview: 
+### Interview : 
  - date -> date
  - notes - str
 
