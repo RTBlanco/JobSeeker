@@ -9,7 +9,7 @@ JobSeeker is a site where an individual user can have a way to keep track of job
 ## Modals 
 
 Association
-	A user will have many jobs aka -> "one to many relation". A job will have many interviews
+	A user will have many jobs aka -> "one to many relation" and a job belongs to a user. A job will have many interviews -> "one to many relations" and an interview belongs to a job.
 
 
 ### User : 
