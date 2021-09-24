@@ -18,7 +18,7 @@ Association
 - password ->  str
 - favorites ->  array of top 3 three jobs (method)
 
-### Job: 
+### Job : 
 - position ->  str
 - company name ->  str
 - hopeful salary ->  int
