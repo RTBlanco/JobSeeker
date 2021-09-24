@@ -48,7 +48,7 @@ Association
 | EDIT JOB | PATCH | ```/user/jobs/:jobId``` |
 | DELETE JOB | DELETE | ```/user/jobs/:jobId``` |
 
-## Interview
+## Interview Routes
 | Action | Verb | Route |
 |--------|------|-------| 
 | FETCH ALL INTERVIEWS | GET | ```/user/jobs/:jobId/interviews``` |
