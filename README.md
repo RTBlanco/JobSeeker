@@ -31,18 +31,14 @@ Association
  - notes - str
 
 ## Routes (TODO: Turn this into a table): 
-  - User 
-    - Login -> ```/user/login```
-    - signup / create new user -> ```/user/new```
-    - Get user -> ```/user```
-    - edit user -> ```/user/```
-    - delete -> ```/user/```
-
   - User
     | Action | Verb | Route |
     |--------|------|-------|
-    | LOGIN  | POST | ```/user/login``` |
-    
+    | LOGIN  | POST | ```/user/login``` | 
+    | SIGNUP | POST | ```/user/new``` |
+    | FETCH USER | GET | ```/user``` |
+    | EDIT USER | PATCH | ```/user``` |
+    | DELETE USER | DELETE | ```/user``` |
 
 
 # Note - Need to start postgresql server to use 
