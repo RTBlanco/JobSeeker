@@ -2,7 +2,7 @@
 
 JobSeeker is a site where an individual user can have a way to keep track of job searches
   - They will be able to save a job 
-  - keep track of the interview
+  - keep track of the interviews
   - and also be a calendar of sorts that only contain job interviews 
 
 
