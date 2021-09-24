@@ -31,7 +31,7 @@ Association
  - notes - str
 
 # Routes (TODO: Turn this into a table): 
-## User
+## User Routes
 | Action | Verb | Route |
 |--------|------|-------|
 | LOGIN  | POST | ```/user/login``` | 
@@ -40,7 +40,7 @@ Association
 | EDIT USER | PATCH | ```/user``` |
 | DELETE USER | DELETE | ```/user``` |
 
-## Job 
+## Job Routes
 | Action | Verb | Route |
 |--------|------|-------| 
 | FETCH ALL JOBS | GET | ```/user/jobs``` |
@@ -51,10 +51,10 @@ Association
 ## Interview
 | Action | Verb | Route |
 |--------|------|-------| 
-| FETCH ALL JOBS | GET | ```/user/jobs``` |
-| FETCH JOB | GET | ```/user/jobs/:jobId``` |
-| EDIT JOB | PATCH | ```/user/jobs/:jobId``` |
-| DELETE JOB | DELETE | ```/user/jobs/:jobId``` |
+| FETCH ALL INTERVIEWS | GET | ```/user/jobs/:jobId/interviews``` |
+| FETCH INTERVIEW | GET | ```/user/jobs/:jobId/interviews/:interviewId``` |
+| EDIT INTERVIEW | PATCH | ```/user/jobs/:jobId/interviews/:interviewId``` |
+| DELETE INTERVIEW | DELETE | ```/user/jobs/:jobId/interviews/:interviewId``` |
 
 
 # Note - Need to start postgresql server to use 
