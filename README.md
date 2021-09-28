@@ -54,7 +54,7 @@ Association
 | FETCH ALL INTERVIEWS | GET | ```/user/jobs/:jobId/interviews``` |
 | FETCH INTERVIEW | GET | ```/user/jobs/:jobId/interviews/:interviewId``` |
 | EDIT INTERVIEW | PATCH | ```/user/jobs/:jobId/interviews/:interviewId``` |
-| DELETE INTERVIEW | DELETE | ```/user/jobs/:jobId/interviews/:interviewId```|
+| DELETE INTERVIEW | DELETE | ```/user/jobs/:jobId/interviews/:interviewId``` |
 
 
 # Note - Need to start postgresql server to use 
