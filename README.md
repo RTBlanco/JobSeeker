@@ -21,6 +21,7 @@ Association
 ### Job : 
 - position ->  str
 - company name ->  str
+- company link -> str
 - hopeful salary ->  int
 - status ->  interviewing | rejected ->  str
 - offer ->  NIL if not given 
