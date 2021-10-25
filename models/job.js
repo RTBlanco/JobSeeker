@@ -25,6 +25,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+
+    companyLink: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isUrl: {
+          msg: 'Not a valid link'
+        }
+      }
+    },
   
     hopeSal: {
       type: DataTypes.INTEGER,
