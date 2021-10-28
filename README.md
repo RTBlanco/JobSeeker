@@ -23,7 +23,7 @@ Association
 - company name ->  str
 - company link -> str
 - hopeful salary ->  int
-- status ->  interviewing | rejected ->  str
+- status ->  interviewing | rejected | offer ->  str
 - offer ->  NIL if not given 
 - interviews ->  array of interview dates 
 
