@@ -60,4 +60,4 @@ Association
 
 # Note - Need to start postgresql server to use 
   - [Windows Wsl2](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-postgresql)
-  
+  - [MAC](https://www.sqlshack.com/setting-up-a-postgresql-database-on-mac/)
